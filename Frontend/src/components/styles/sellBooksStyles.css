@@ -4,8 +4,7 @@
 
     display: grid;
   
-    background-color: #faf0e6;
-    background-image: linear-gradient(to bottom, #8a7fa1, #a296b9);
+    background-color: #272829;
   }
   
   .sellbooks-container {
@@ -19,7 +18,7 @@
 
     align-self: center;
   
-    background-color: rgba(255, 255, 255, 0.814);
+    background-color: #D8D9DA;
   }
   
   .sellbooks-container h2 {

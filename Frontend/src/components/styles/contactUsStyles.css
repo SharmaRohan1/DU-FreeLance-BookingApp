@@ -2,7 +2,7 @@
     height: 90vh;
     display: grid;
 
-    background-color: #5C5470;
+    background-color: #272829;
 }
 
 .contactus-container{
@@ -21,7 +21,7 @@
 }
 
 .contactus-container a:hover{
-    color: #352F44;
+    color: #D8D9DA;
 }
 
 .contacts-container{

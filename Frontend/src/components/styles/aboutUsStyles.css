@@ -3,14 +3,14 @@
     padding: 20vh 20px 10vh;
   
     background-color: #faf0e6;
-    background-image: linear-gradient(to bottom, #5c5470, #dddce0);
+    background-image: linear-gradient(to bottom, #272829, #dddce0);
 
   }
   
   .hero-container {
     width: 80%;
     margin: auto;
-    color: #302f30;
+    color: #fff;
     display: grid;
     align-items: center;
   }

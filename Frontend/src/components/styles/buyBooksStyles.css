@@ -20,12 +20,13 @@
     border-radius: 5px;
     padding: 1rem;
   
-    background-color: #B9B4C7;
+    background-color: #272829;
   }
   
   .buybooks-container h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #fff;
   }
   
   .buybooks-form {
