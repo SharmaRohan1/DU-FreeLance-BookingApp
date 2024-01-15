@@ -2,7 +2,7 @@ import "./styles/aboutUsStyles.css";
 
 function Hero() {
   return (
-    <section className="hero-section">
+    <section className="hero-section" id="aboutUs-section">
       <div className="hero-container">
         <p className="aboutUs">
           BooKing was born with a dream to create a platform where college folks

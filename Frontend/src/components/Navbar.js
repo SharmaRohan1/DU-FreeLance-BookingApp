@@ -25,7 +25,7 @@ function Navbar() {
     <nav>
       <div className="nav-content">
         <div className="logo">
-          <a href="#">
+          <a href="#aboutUs-section">
             <img src={LogoImg} alt="Booking" className="logo-img"/>
           </a>
         </div>
@@ -41,7 +41,7 @@ function Navbar() {
         {isMenuOpen && (
           <ul className="nav-links">
             <li>
-              <a href="#">About</a>
+              <a href="#aboutUs-section">About</a>
             </li>
             <li>
               <a href="#buybooks-section">Buy Books</a>
