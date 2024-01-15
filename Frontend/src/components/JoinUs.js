@@ -69,6 +69,8 @@ function JoinUs() {
         <Accordion.Header>Join the Community</Accordion.Header>
         <Accordion.Body>
         Join our community to get the latest updates on everything that’s coming your way. To be a part of our WhatsApp community, click on the link given below.
+
+        <a href="https://chat.whatsapp.com/IFrW66UiRBiITynIYMfY7D" target='_blank' rel="noreferrer" style={{display:"block", textAlign:"center", padding:"1rem 0"}}>BooKing Whatsapp community</a>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

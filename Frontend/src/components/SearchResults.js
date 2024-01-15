@@ -4,7 +4,7 @@ import { Pagination, ListGroup } from "react-bootstrap";
 import axios from "axios";
 import "./styles/searchResultsStyles.css";
 
-const searchResults = [
+const dummysearchResults = [
   {
     id: 1,
     title: "The Catcher in the Rye",
@@ -87,23 +87,25 @@ const searchResults = [
   },
 ];
 
-
 function SearchResults(props) {
   const bookQuery = props.bookQuery;
   const authorQuery = props.authorQuery;
 
   //for performing the search based on the queries received
 
-  const [searchResults , setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
   //res will receive the results from the backend
   async function getSearchResults() {
-    const res = await axios.get(`http://localhost:4000/api/getBooks?title=${bookQuery}&author=${authorQuery}`);
+    const res = await axios.get(
+      `http://localhost:4000/api/getBooks?title=${bookQuery}&author=${authorQuery}`
+    );
     console.log(res.data.books);
     setSearchResults(res);
   }
-  getSearchResults()
-  const empty = (searchResults.length === 0);
+  getSearchResults();
+
+  const empty = searchResults.length === 0;
   console.log(searchResults);
   console.log(searchResults.length);
 
@@ -111,10 +113,14 @@ function SearchResults(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  let currentItems = [];
 
-  const currentItems = searchResults.slice(startIndex, endIndex);
+  if (searchResults.length > 0) {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    currentItems = searchResults.slice(startIndex, endIndex);
+  }
 
   const totalPages = Math.ceil(searchResults.length / itemsPerPage);
 
@@ -127,7 +133,7 @@ function SearchResults(props) {
       <div className="searchResults-container">
         <h3>Search Results</h3>
 
-        {(empty) ? (
+        {empty ? (
           <div
             className="listing"
             style={{
@@ -159,7 +165,25 @@ function SearchResults(props) {
           </div>
         )}
 
-        <div className="pagination-container">
+        {empty ? (
+          <div></div>
+        ) : (
+          <div className="pagination-container">
+            <Pagination>
+              {[...Array(totalPages)].map((_, index) => (
+                <Pagination.Item
+                  key={index + 1}
+                  active={index + 1 === currentPage}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </Pagination.Item>
+              ))}
+            </Pagination>
+          </div>
+        )}
+
+        {/* <div className="pagination-container">
           <Pagination>
             {[...Array(totalPages)].map((_, index) => (
               <Pagination.Item
@@ -171,7 +195,7 @@ function SearchResults(props) {
               </Pagination.Item>
             ))}
           </Pagination>
-        </div>
+        </div> */}
       </div>
     </section>
   );

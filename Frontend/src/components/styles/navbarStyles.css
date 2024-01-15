@@ -14,6 +14,11 @@ nav {
     transition: height 0.3s ease-in-out;
     z-index: 10;
   }
+
+  .logo-img{
+    height: 4.5rem;
+    border-radius: 20px;
+  }
   
   .logo {
     font-weight: bolder;
@@ -54,6 +59,9 @@ nav {
   
     width: 100%;
     text-align: center;
+
+    display: grid;
+    align-items: center;
   }
   
   .nav-links li a {
@@ -77,7 +85,7 @@ nav {
     .nav-content {
       grid-template-columns: 1fr 2fr;
     }
-  
+
     .nav-links {
       max-width: 80%;
       margin-left: auto;

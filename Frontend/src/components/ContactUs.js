@@ -7,7 +7,7 @@ function ContactUs(){
             <div className="contactus-container">
                 <h2>Contact Us!</h2>
                 <p> Do not hesitate to get in touch should you have any further queries or concerns. 
-                <strong>We’ll reply back to you sooner than your crush does!</strong> 
+                <strong> We’ll reply back to you sooner than your crush does!</strong> 
 </p>
 
 <div className="contacts-container">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LogoImg from "./Logo.png";
 
 import "./styles/navbarStyles.css";
 
@@ -24,7 +25,9 @@ function Navbar() {
     <nav>
       <div className="nav-content">
         <div className="logo">
-          <a href="#">BooKing</a>
+          <a href="#">
+            <img src={LogoImg} alt="Booking" className="logo-img"/>
+          </a>
         </div>
 
         <div className="list-btn" onClick={toggleMenu}>
