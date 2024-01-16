@@ -3,12 +3,55 @@ import ListedBooks from "./ListedBooks";
 import axios from "axios";
 import { useState } from "react";
 
-function SellBooks() {
+//first call for initial render
+// let initialListings = [];
 
-  const [title , setTitle] = useState("");
-  const [author , setAuthor] = useState("");
-  const [edition , setEdition] = useState("");
-  const [condition , setCondition] = useState("Like New");
+const getListings = async () => {
+  try {
+
+    console.log("Get Call");
+    const response = await axios.get(
+      `http://localhost:4000/api/getBooksEmail?email=${localStorage.getItem(
+        "userEmail"
+      )}`
+    );
+
+    return response.data.books;
+
+  } catch (error) {
+    alert("Something went wrong [:-(]");
+  }
+};
+
+let flag = true;
+
+
+function SellBooks() {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [edition, setEdition] = useState("");
+  const [condition, setCondition] = useState("Like New");
+
+
+  
+
+  const [listings, setListings] = useState([]);
+  console.log(typeof listings);
+  console.log(listings);
+
+  const initCall = async () => {
+    const res = await getListings();
+    setListings(res);
+  };
+
+  if(flag){
+    initCall();
+    flag = false;
+  }
+  
+
+  
+
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -26,21 +69,46 @@ function SellBooks() {
     setCondition(event.target.value);
   };
 
-  const handleSubmit = async(event) => {
+  const updateListings = async () => {
+    alert("Deleted!");
+    const newListings = await getListings();
+    setListings(newListings);
+  }
+
+
+  //after submission of the form
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let submittedData = await axios.post("http://localhost:4000/api/addBook", {
-      title: title,
-      author: author,
-      edition: edition,
-      condition: condition,
-      email: localStorage.getItem("userEmail")
-    })
+
+    try {
+      let submittedData = await axios.post(
+        "http://localhost:4000/api/addBook",
+        {
+          title: title,
+          author: author,
+          edition: edition,
+          condition: condition,
+          email: localStorage.getItem("userEmail"),
+        }
+      );
+      console.log("Submitted = ", submittedData);
+
+      const response = await getListings();
+      const data = response;
+      setListings(data);
+
+      console.log("Received = ", data);
+
+      alert("Submitted [:-)]");
+    } catch (error) {
+      alert("Something went wrong [:-(]");
+    }
+
     setTitle("");
     setAuthor("");
     setEdition("");
     setCondition("Like New");
   };
-
 
   return (
     <section id="sellbooks-section">
@@ -79,10 +147,15 @@ function SellBooks() {
             placeholder="Edition(yyyy)"
           />
 
-
           <div className="condition-container">
             <label for="condition">Condition:</label>
-            <select id="condition" name="condition" value={condition} onChange={handleConditionChange} required>
+            <select
+              id="condition"
+              name="condition"
+              value={condition}
+              onChange={handleConditionChange}
+              required
+            >
               <option value="like-new">Like New</option>
               <option value="very-good">Very Good</option>
               <option value="good">Good</option>
@@ -94,7 +167,22 @@ function SellBooks() {
         </form>
       </div>
 
-      <ListedBooks />
+      <h3 style={{color:"#fff" , marginTop:"3em"}}>Books listed by you</h3>
+
+      {listings.length === 0 ? (
+        <div
+          className="listing"
+          style={{
+            color: "#fff",
+            fontWeight: "bolder",
+            textAlign: "center",
+          }}
+        >
+          No listings
+        </div>
+      ) : (
+        <ListedBooks listings={listings} updateListings={updateListings}/>
+      )}
     </section>
   );
 }

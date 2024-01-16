@@ -1,5 +1,4 @@
 import { Button } from "react-bootstrap";
-import axios from "axios";
 import "./styles/listingStyles.css";
 
 function Listing(props) {
@@ -12,7 +11,7 @@ function Listing(props) {
   const handleClick = async (event) => {
     //console.log("Delete clicked");
     const idToBeDeleted = event.target.parentNode.parentNode.getAttribute("id");
-    let deleted = await axios.delete(`http://localhost:4000/api/deleteBookById?id=${idToBeDeleted}`); 
+    // let deleted = await axios.delete(`http://localhost:4000/api/deleteBookById?id=${idToBeDeleted}`); 
     onDelete(idToBeDeleted);
   };
 

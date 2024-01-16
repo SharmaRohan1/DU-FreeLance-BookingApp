@@ -123,6 +123,7 @@ function SearchResults(props) {
   }
 
   const totalPages = Math.ceil(searchResults.length / itemsPerPage);
+  console.log("Total pages = ",totalPages);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
