@@ -11,11 +11,11 @@ export function Result(props) {
   const condition = props.condition;
 
   let badgeValue = "success";
-  if(condition === "Acceptable"){
+  if(condition === "acceptable"){
     badgeValue="warning";
-  }else if(condition === "Good"){
+  }else if(condition === "good"){
     badgeValue="info";
-  }else if(condition === "Very Good"){
+  }else if(condition === "very-good"){
     badgeValue="primary";
   }
 
