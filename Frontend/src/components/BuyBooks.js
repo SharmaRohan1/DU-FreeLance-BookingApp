@@ -76,7 +76,7 @@ function BuyBooks() {
 
       {/* {submitted && <SearchResults bookQuery={bookQuery} authorQuery={authorQuery}/>} */}
 
-      <section className="searchResults-section">
+      {/* <section className="searchResults-section">
         <div className="sellbooks-container">
           {submitted && (
             <div>
@@ -97,7 +97,28 @@ function BuyBooks() {
             </div>
           )}
         </div>
-      </section>
+      </section> */}
+
+      {submitted && <section className="searchResults-section">
+        <div className="sellbooks-container">
+            <div>
+              {searchResults.length === 0 ? (
+                <div
+                  className="listing"
+                  style={{
+                    color: "black",
+                    fontWeight: "bolder",
+                    textAlign: "center",
+                  }}
+                >
+                  No results (:"-|)
+                </div>
+              ) : (
+                <SearchResults1 result={searchResults} />
+              )}
+            </div>
+        </div>
+      </section>}
     </section>
   );
 }

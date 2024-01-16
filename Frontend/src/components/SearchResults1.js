@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pagination , ListGroup } from "react-bootstrap";
+import { Pagination, ListGroup } from "react-bootstrap";
 
 import { Result } from "./Result";
 
@@ -38,7 +38,7 @@ function NoSearchResults(props) {
                     title={res.title}
                     author={res.author}
                     edition={res.edition}
-                    contact={res.contact}
+                    contact={localStorage.getItem("userEmail")}
                     condition={res.condition}
                   />
                 </ListGroup.Item>
@@ -60,7 +60,6 @@ function NoSearchResults(props) {
             ))}
           </Pagination>
         </div>
-
       </div>
     </section>
   );
